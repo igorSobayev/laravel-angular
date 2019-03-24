@@ -1,3 +1,4 @@
-<p>
-  task-item works!
-</p>
+<span>{{ task.title }}
+  <button class="float-right btn btn-danger ml-2" (click)="delete()">Delete</button>
+  <button class="float-right btn btn-dark" routerLink="/task/{{task.id}}">Detail</button>
+</span>

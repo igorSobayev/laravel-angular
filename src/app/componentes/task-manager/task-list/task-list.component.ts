@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from './../../../Task';
+import { PruebaService } from './../../../servicios/prueba.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[] = [];
+
+  constructor(private ts: PruebaService, private router: Router) { }
 
   ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks() {
+    this.ts.getAllTasks().subscribe((all) => {
+      this.tasks = all;
+      this.router.navigateByUrl('task');
+      console.log(this.tasks);
+    });
   }
 
 }

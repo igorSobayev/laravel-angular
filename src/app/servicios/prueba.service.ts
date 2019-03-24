@@ -24,4 +24,28 @@ export class PruebaService {
      const newTask = new Task(title);
      return this.http.post<Task>(this.server + 'add', newTask);
    }
+
+   getAllTasks(): Observable<Task[]> {
+     return this.http.get<Task[]>(this.server + 'get')
+   }
+
+   deleteTask(numero: any): Observable<Task> {
+     var newTask = {
+       id: numero,
+       title: 'not set',
+       status: false,
+       date: new Date()
+     };
+     return this.http.post<Task>(this.server + 'delete', newTask);
+   }
+
+   getOne(num: any): Observable<Task> {
+     var newTask = {
+       id: num,
+       title: 'not set',
+       status: false,
+       date: new Date()
+     };
+     return this.http.post<Task>(this.server + 'getone', newTask);
+   }
 }

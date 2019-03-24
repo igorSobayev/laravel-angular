@@ -17,8 +17,6 @@ export class LoginComponent implements OnInit {
     const target = e.target;
     const name = target.querySelector("#nm").value;
     const pass = target.querySelector("#ps").value;
-    console.log(name);
-    console.log(pass);
 
     if(name === pass) {
       this.router.navigateByUrl('task');
