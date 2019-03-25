@@ -5,7 +5,13 @@
 <form (submit)="add($event)">
   <div class="form-group">
     <label for="task">Enter task title: </label>
-    <input type="text" name="title" id="task" class="form-control" placeholder="Enter task title" [(ngModel)]="title">
+    <input type="text" name="title" id="task" class="form-control" placeholder="Enter task title" [(ngModel)]="title"
+     [ngClass]="{'is-invalid' : title == '' && formSubmitted}">
+    <div class="invalid-feedback">
+      <p>
+        Task can't be blank !
+        </p>
+    </div>
   </div>
   <button class="btn btn-danger">Add task</button>
 

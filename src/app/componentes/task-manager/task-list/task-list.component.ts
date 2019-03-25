@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './../../../Task';
 import { PruebaService } from './../../../servicios/prueba.service';
+import { MessageService } from './../../../servicios/message.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,10 +13,13 @@ export class TaskListComponent implements OnInit {
 
   tasks: Task[] = [];
 
-  constructor(private ts: PruebaService, private router: Router) { }
+  constructor(private ts: PruebaService, private router: Router, private msg: MessageService) { }
 
   ngOnInit() {
     this.getTasks();
+    this.msg.getMessage().subscribe((data) => {
+      this.getTasks();
+    });
   }
 
   getTasks() {
